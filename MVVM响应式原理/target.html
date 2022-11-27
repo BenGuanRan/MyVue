@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM响应式原理</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{person.name}} -- {{person.age}}</h2>
+        <h3>{{person.hobby}}</h3>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <h3>{{msg.value}}</h3>
+        <div v-text="msg.value"></div>
+        <div v-html="htmlStr"></div>
+        <input type="text" v-model="msg">
+        <button v-on:click="handleClick">{{clickTip}}</button>
+    </div>
+
+    <script type="module">
+        import MVue from './MVue.js'
+        let vm = new MVue({
+            el: "#app",
+            data: {
+                person: {
+                    name: 'BenGuanRan',
+                    age: 18,
+                    hobby: 'frontend'
+                },
+                msg: {
+                    value: 'This is a message!'
+                },
+                htmlStr: '<b>This is a HTML</b>',
+                clickTip: 'Please click me!'
+            },
+            methods: {
+                handleClick() {
+                    alert('Clicked the button!')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
